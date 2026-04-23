@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIGIN — India's Coffee Discovery Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --espresso: #1a0f00;
+    --dark-brown: #2d1a00;
+    --mid-brown: #5c3a1e;
+    --gold: #c9963a;
+    --gold-light: #e8b96a;
+    --cream: #f7f0e6;
+    --parchment: #ede4d4;
+    --text-dark: #1a0f00;
+    --text-mid: #4a3520;
+    --coming-soon-bg: #2d1a00;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–espresso);
+color: var(–cream);
+overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 60px 24px 80px;
+position: relative;
+background: radial-gradient(ellipse at 50% 30%, #3d2000 0%, #1a0f00 60%, #0d0700 100%);
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+width: 600px; height: 600px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(201,150,58,0.12) 0%, transparent 70%);
+top: 50%; left: 50%;
+transform: translate(-50%,-50%);
+pointer-events: none;
+}
+
+.hero-corner {
+position: absolute;
+width: 40px; height: 40px;
+border-color: var(–gold);
+border-style: solid;
+opacity: 0.5;
+}
+.hero-corner.tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+.hero-corner.tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+.hero-corner.bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+.hero-corner.br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+
+.hero-eyebrow {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 0.35em;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 28px;
+opacity: 0;
+animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(52px, 10vw, 100px);
+font-weight: 900;
+line-height: 0.95;
+color: var(–cream);
+margin-bottom: 8px;
+opacity: 0;
+animation: fadeUp 0.8s 0.4s forwards;
+}
+
+.hero h1 em {
+font-style: italic;
+color: var(–gold);
+}
+
+.hero-tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(16px, 3vw, 22px);
+font-style: italic;
+font-weight: 300;
+color: rgba(247,240,230,0.65);
+margin: 24px 0 48px;
+opacity: 0;
+animation: fadeUp 0.8s 0.6s forwards;
+}
+
+.hero-nav {
+display: flex;
+gap: 2px;
+border: 1px solid rgba(201,150,58,0.3);
+opacity: 0;
+animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.hero-nav a {
+padding: 18px 28px;
+text-decoration: none;
+font-size: 11px;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–cream);
+font-weight: 400;
+transition: all 0.3s;
+border-right: 1px solid rgba(201,150,58,0.3);
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+.hero-nav a:last-child { border-right: none; }
+
+.hero-nav a .nav-icon { font-size: 22px; }
+
+.hero-nav a:hover {
+background: rgba(201,150,58,0.1);
+color: var(–gold-light);
+}
+
+.hero-nav a.active-nav {
+background: rgba(201,150,58,0.12);
+}
+
+.badge-coming {
+font-size: 8px;
+letter-spacing: 0.12em;
+background: rgba(201,150,58,0.2);
+color: var(–gold);
+padding: 2px 6px;
+border-radius: 20px;
+border: 1px solid rgba(201,150,58,0.3);
+white-space: nowrap;
+margin-top: 4px;
+}
+
+.hero-brand {
+margin-top: 52px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 11px;
+letter-spacing: 0.5em;
+text-transform: uppercase;
+color: var(–gold);
+opacity: 0;
+animation: fadeUp 0.8s 1s forwards;
+}
+
+/* ── COMING SOON SECTION ── */
+.coming-soon-strip {
+background: var(–dark-brown);
+border-top: 1px solid rgba(201,150,58,0.2);
+border-bottom: 1px solid rgba(201,150,58,0.2);
+padding: 64px 24px;
+}
+
+.section-label {
+font-size: 10px;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–gold);
+text-align: center;
+margin-bottom: 16px;
+}
+
+.section-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(28px, 5vw, 48px);
+font-weight: 700;
+text-align: center;
+color: var(–cream);
+margin-bottom: 12px;
+}
+
+.section-sub {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+font-style: italic;
+color: rgba(247,240,230,0.55);
+text-align: center;
+max-width: 540px;
+margin: 0 auto 48px;
+}
+
+.coming-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 2px;
+max-width: 900px;
+margin: 0 auto;
+border: 1px solid rgba(201,150,58,0.2);
+}
+
+.coming-card {
+background: rgba(26,15,0,0.6);
+padding: 32px 28px;
+position: relative;
+transition: background 0.3s;
+}
+
+.coming-card:hover {
+background: rgba(201,150,58,0.06);
+}
+
+.coming-card-icon {
+font-size: 28px;
+margin-bottom: 16px;
+}
+
+.coming-card h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 20px;
+font-weight: 700;
+color: var(–cream);
+margin-bottom: 10px;
+}
+
+.coming-card p {
+font-size: 13px;
+line-height: 1.7;
+color: rgba(247,240,230,0.55);
+margin-bottom: 20px;
+}
+
+.tag-soon {
+display: inline-block;
+font-size: 9px;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–gold);
+border: 1px solid rgba(201,150,58,0.4);
+padding: 4px 10px;
+border-radius: 2px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+display: flex;
+align-items: center;
+gap: 16px;
+max-width: 600px;
+margin: 0 auto;
+padding: 0 24px;
+}
+.divider-line { flex: 1; height: 1px; background: rgba(201,150,58,0.2); }
+.divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(–gold); opacity: 0.5; }
+
+/* ── COFFEE GUIDE SECTION ── */
+.guide-section {
+background: var(–cream);
+color: var(–text-dark);
+padding: 80px 24px;
+}
+
+.guide-section .section-label { color: var(–mid-brown); }
+.guide-section .section-title { color: var(–espresso); }
+.guide-section .section-sub { color: var(–mid-brown); }
+
+.guide-intro-box {
+background: var(–espresso);
+border-left: 3px solid var(–gold);
+padding: 28px 32px;
+max-width: 700px;
+margin: 0 auto 56px;
+}
+
+.guide-intro-box p {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+font-style: italic;
+color: var(–cream);
+line-height: 1.7;
+}
+
+/* Guide Steps */
+.guide-steps {
+max-width: 820px;
+margin: 0 auto;
+}
+
+.guide-step {
+margin-bottom: 48px;
+border-bottom: 1px solid rgba(92,58,30,0.12);
+padding-bottom: 48px;
+}
+.guide-step:last-child { border-bottom: none; }
+
+.step-header {
+display: flex;
+align-items: flex-start;
+gap: 20px;
+margin-bottom: 24px;
+}
+
+.step-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 48px;
+font-weight: 900;
+color: var(–gold);
+opacity: 0.35;
+line-height: 1;
+flex-shrink: 0;
+width: 52px;
+}
+
+.step-title-block h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(22px, 4vw, 32px);
+font-weight: 700;
+color: var(–espresso);
+margin-bottom: 4px;
+}
+
+.step-title-block .step-sub {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 16px;
+font-style: italic;
+color: var(–mid-brown);
+}
+
+/* Region cards */
+.region-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 16px;
+}
+
+.region-card {
+background: var(–parchment);
+border: 1px solid rgba(92,58,30,0.15);
+padding: 24px;
+position: relative;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.region-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 32px rgba(92,58,30,0.15);
+}
+
+.region-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 18px;
+font-weight: 700;
+color: var(–espresso);
+margin-bottom: 4px;
+}
+
+.region-loc {
+font-size: 10px;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 14px;
+}
+
+.region-stats {
+display: flex;
+flex-direction: column;
+gap: 6px;
+margin-bottom: 14px;
+}
+
+.stat-row {
+display: flex;
+justify-content: space-between;
+font-size: 11px;
+color: var(–mid-brown);
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+.stat-row span:last-child {
+font-weight: 500;
+color: var(–espresso);
+}
+
+.region-taste {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px;
+font-style: italic;
+color: var(–mid-brown);
+border-top: 1px solid rgba(92,58,30,0.15);
+padding-top: 12px;
+margin-top: 4px;
+}
+
+.region-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-top: 12px;
+}
+
+.rtag {
+font-size: 9px;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+border: 1px solid rgba(92,58,30,0.25);
+color: var(–mid-brown);
+padding: 3px 8px;
+border-radius: 2px;
+}
+
+/* Roast section */
+.roast-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 0;
+border: 1px solid rgba(92,58,30,0.15);
+}
+
+.roast-card {
+padding: 28px 24px;
+border-right: 1px solid rgba(92,58,30,0.15);
+background: var(–parchment);
+transition: background 0.2s;
+}
+.roast-card:last-child { border-right: none; }
+.roast-card:hover { background: #e5dace; }
+
+.roast-level {
+font-family: ‘Playfair Display’, serif;
+font-size: 20px;
+font-weight: 700;
+color: var(–espresso);
+margin-bottom: 4px;
+}
+
+.roast-desc {
+font-size: 12px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 14px;
+font-weight: 500;
+}
+
+.roast-notes {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 15px;
+font-style: italic;
+color: var(–mid-brown);
+line-height: 1.6;
+margin-bottom: 12px;
+}
+
+.roast-best {
+font-size: 11px;
+color: rgba(92,58,30,0.7);
+border-top: 1px solid rgba(92,58,30,0.12);
+padding-top: 10px;
+}
+
+.myth-box {
+background: var(–espresso);
+border: 1px solid rgba(201,150,58,0.25);
+padding: 20px 24px;
+margin-top: 16px;
+}
+
+.myth-box p {
+font-size: 13px;
+line-height: 1.7;
+color: rgba(247,240,230,0.75);
+}
+
+.myth-box strong {
+color: var(–gold);
+}
+
+/* Process section */
+.process-list {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+.process-item {
+background: var(–parchment);
+border: 1px solid rgba(92,58,30,0.15);
+padding: 24px 28px;
+display: grid;
+grid-template-columns: auto 1fr;
+gap: 20px;
+align-items: start;
+transition: background 0.2s;
+}
+.process-item:hover { background: #e5dace; }
+
+.process-icon { font-size: 28px; margin-top: 2px; }
+
+.process-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 18px;
+font-weight: 700;
+color: var(–espresso);
+margin-bottom: 4px;
+}
+
+.process-subtitle {
+font-size: 11px;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 10px;
+}
+
+.process-text {
+font-size: 13px;
+line-height: 1.7;
+color: var(–text-mid);
+}
+
+.process-vibe {
+display: inline-block;
+margin-top: 10px;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px;
+font-style: italic;
+font-weight: 600;
+color: var(–mid-brown);
+}
+
+/* Brew methods */
+.brew-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 16px;
+}
+
+.brew-card {
+background: var(–parchment);
+border: 1px solid rgba(92,58,30,0.15);
+padding: 22px;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.brew-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 24px rgba(92,58,30,0.12);
+}
+
+.brew-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 12px;
+}
+
+.brew-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 18px;
+font-weight: 700;
+color: var(–espresso);
+}
+
+.brew-difficulty {
+font-size: 9px;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–gold);
+background: rgba(201,150,58,0.1);
+border: 1px solid rgba(201,150,58,0.25);
+padding: 3px 7px;
+border-radius: 2px;
+white-space: nowrap;
+flex-shrink: 0;
+}
+
+.brew-stats {
+display: flex;
+gap: 16px;
+margin-bottom: 12px;
+flex-wrap: wrap;
+}
+
+.brew-stat {
+font-size: 11px;
+color: var(–mid-brown);
+}
+.brew-stat strong {
+display: block;
+font-size: 12px;
+color: var(–espresso);
+font-weight: 500;
+}
+
+.brew-text {
+font-size: 12px;
+line-height: 1.7;
+color: var(–text-mid);
+margin-bottom: 12px;
+}
+
+.brew-perfect {
+font-size: 11px;
+color: var(–mid-brown);
+border-top: 1px solid rgba(92,58,30,0.12);
+padding-top: 10px;
+font-style: italic;
+}
+
+/* Buying tips */
+.tips-list {
+display: flex;
+flex-direction: column;
+gap: 0;
+border: 1px solid rgba(92,58,30,0.15);
+}
+
+.tip-item {
+display: grid;
+grid-template-columns: 52px 1fr;
+gap: 0;
+border-bottom: 1px solid rgba(92,58,30,0.12);
+transition: background 0.2s;
+}
+.tip-item:last-child { border-bottom: none; }
+.tip-item:hover { background: #e5dace; }
+
+.tip-num {
+background: var(–espresso);
+color: var(–gold);
+font-family: ‘Playfair Display’, serif;
+font-size: 22px;
+font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.tip-body {
+background: var(–parchment);
+padding: 22px 24px;
+}
+
+.tip-body h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 17px;
+font-weight: 700;
+color: var(–espresso);
+margin-bottom: 8px;
+}
+
+.tip-body p {
+font-size: 13px;
+line-height: 1.7;
+color: var(–text-mid);
+}
+
+/* Cheatsheet */
+.cheatsheet {
+background: var(–espresso);
+border: 1px solid rgba(201,150,58,0.2);
+padding: 36px 32px;
+margin-top: 40px;
+}
+
+.cheat-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 28px;
+font-weight: 700;
+color: var(–cream);
+margin-bottom: 24px;
+}
+.cheat-title em {
+color: var(–gold);
+font-style: italic;
+}
+
+.cheat-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 0;
+border-top: 1px solid rgba(201,150,58,0.15);
+}
+
+.cheat-item {
+padding: 16px 0 16px 20px;
+border-bottom: 1px solid rgba(201,150,58,0.1);
+border-left: 2px solid rgba(201,150,58,0.25);
+margin-bottom: 12px;
+}
+
+.cheat-q {
+font-size: 10px;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 6px;
+font-weight: 500;
+}
+
+.cheat-a {
+font-size: 13px;
+line-height: 1.6;
+color: rgba(247,240,230,0.8);
+}
+
+/* ── VISION SECTION ── */
+.vision-section {
+background: var(–dark-brown);
+padding: 80px 24px;
+text-align: center;
+}
+
+.vision-inner {
+max-width: 680px;
+margin: 0 auto;
+}
+
+.vision-quote {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(22px, 4vw, 36px);
+font-weight: 700;
+color: var(–cream);
+line-height: 1.3;
+margin-bottom: 20px;
+}
+
+.vision-quote em { color: var(–gold); font-style: italic; }
+
+.vision-body {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+font-style: italic;
+color: rgba(247,240,230,0.6);
+line-height: 1.7;
+margin-bottom: 48px;
+}
+
+.pillars {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2px;
+margin-bottom: 48px;
+text-align: left;
+}
+
+.pillar {
+background: rgba(255,255,255,0.04);
+padding: 24px;
+border: 1px solid rgba(201,150,58,0.15);
+}
+
+.pillar h4 {
+font-family: ‘Playfair Display’, serif;
+font-size: 16px;
+font-weight: 700;
+color: var(–gold);
+margin-bottom: 8px;
+}
+
+.pillar p {
+font-size: 13px;
+line-height: 1.6;
+color: rgba(247,240,230,0.55);
+}
+
+/* ── CONTACT ── */
+.contact-section {
+background: var(–espresso);
+border-top: 1px solid rgba(201,150,58,0.2);
+padding: 72px 24px;
+text-align: center;
+}
+
+.contact-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 28px;
+font-weight: 700;
+color: var(–cream);
+margin-bottom: 6px;
+}
+
+.contact-role {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 16px;
+font-style: italic;
+color: rgba(247,240,230,0.5);
+margin-bottom: 32px;
+}
+
+.contact-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+margin-bottom: 48px;
+}
+
+.contact-link {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 12px 20px;
+border: 1px solid rgba(201,150,58,0.3);
+color: var(–cream);
+text-decoration: none;
+font-size: 13px;
+font-weight: 400;
+transition: all 0.3s;
+background: rgba(255,255,255,0.03);
+}
+
+.contact-link:hover {
+background: rgba(201,150,58,0.1);
+border-color: rgba(201,150,58,0.6);
+color: var(–gold-light);
+}
+
+.contact-link .link-icon { font-size: 16px; }
+
+.footer-brand {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 11px;
+letter-spacing: 0.5em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 8px;
+}
+
+.footer-tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px;
+font-style: italic;
+color: rgba(247,240,230,0.3);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STICKY TOC ── */
+.toc {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(26,15,0,0.97);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(201,150,58,0.2);
+padding: 12px 24px;
+display: flex;
+align-items: center;
+gap: 4px;
+overflow-x: auto;
+scrollbar-width: none;
+}
+.toc::-webkit-scrollbar { display: none; }
+
+.toc-brand {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 11px;
+letter-spacing: 0.3em;
+color: var(–gold);
+text-transform: uppercase;
+flex-shrink: 0;
+margin-right: 12px;
+}
+
+.toc a {
+text-decoration: none;
+font-size: 10px;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: rgba(247,240,230,0.55);
+white-space: nowrap;
+padding: 6px 12px;
+border-radius: 2px;
+transition: all 0.2s;
+flex-shrink: 0;
+}
+
+.toc a:hover {
+color: var(–gold-light);
+background: rgba(201,150,58,0.08);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+.hero-nav { flex-direction: column; gap: 0; }
+.hero-nav a { border-right: none; border-bottom: 1px solid rgba(201,150,58,0.3); flex-direction: row; justify-content: center; }
+.hero-nav a:last-child { border-bottom: none; }
+.roast-grid { grid-template-columns: 1fr; }
+.roast-card { border-right: none; border-bottom: 1px solid rgba(92,58,30,0.15); }
+.roast-card:last-child { border-bottom: none; }
+.pillars { grid-template-columns: 1fr; }
+.guide-intro-box { padding: 20px; }
+.cheatsheet { padding: 24px 20px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero" id="top">
+  <div class="hero-corner tl"></div>
+  <div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div>
+  <div class="hero-corner br"></div>
+
+  <div class="hero-eyebrow">Origin &nbsp;·&nbsp; India's Coffee Discovery Page</div>
+  <h1>Your coffee.<br><em>Your estate.</em></h1>
+  <p class="hero-tagline">No jargon. No middlemen.<br>Just the honest story of Indian coffee.</p>
+
+  <div class="hero-nav">
+    <a href="#guide">
+      <span class="nav-icon">🌿</span>
+      Read the Guide
+    </a>
+    <a href="#beans-subscriptions">
+      <span class="nav-icon">📦</span>
+      Bean Subscriptions
+      <span class="badge-coming">Coming Soon</span>
+    </a>
+    <a href="#estate-visits">
+      <span class="nav-icon">🗺</span>
+      Visit Estates
+      <span class="badge-coming">Coming Soon</span>
+    </a>
+  </div>
+
+  <div class="hero-brand">O R I G I N</div>
+</section>
+
+<!-- STICKY TOC -->
+
+<nav class="toc">
+  <span class="toc-brand">Origin</span>
+  <a href="#guide">Coffee Guide</a>
+  <a href="#step1">Your Taste</a>
+  <a href="#step2">Indian Beans</a>
+  <a href="#step3">Roast</a>
+  <a href="#step4">Processing</a>
+  <a href="#step5">Brew</a>
+  <a href="#step6">Buying Smart</a>
+  <a href="#coming-soon">What's Coming</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- COFFEE GUIDE -->
+
+<section class="guide-section" id="guide">
+  <div class="section-label">India's Coffee Education Guide</div>
+  <h2 class="section-title">Find Your Perfect Cup</h2>
+  <p class="section-sub">No jargon. No confusion. A simple guide to buy smarter, brew better, and taste the difference.</p>
+
+  <div class="guide-intro-box">
+    <p>"India grows some of the world's finest coffee — shade-grown, estate-managed, generationally crafted. Most Indians have never tasted it. This guide changes that."</p>
+  </div>
+
+  <div class="guide-steps">
+
+```
+<!-- STEP 1 -->
+<div class="guide-step" id="step1">
+  <div class="step-header">
+    <div class="step-num">01</div>
+    <div class="step-title-block">
+      <h2>What do you actually like?</h2>
+      <span class="step-sub">Start here. Before buying any bean, know your starting point.</span>
+    </div>
+  </div>
+
+  <div class="region-grid">
+    <div class="region-card">
+      <div style="font-size:24px;margin-bottom:12px;">☕</div>
+      <div class="region-name">Strong &amp; Bold</div>
+      <p class="region-taste">Filter coffee or dark espresso — you want intensity, a thick decoction, and a powerful kick.</p>
+      <div class="region-tags">
+        <span class="rtag">Robusta Blend</span>
+        <span class="rtag">Dark Roast</span>
+        <span class="rtag">South Indian Filter</span>
+      </div>
+    </div>
+    <div class="region-card">
+      <div style="font-size:24px;margin-bottom:12px;">🥛</div>
+      <div class="region-name">Smooth &amp; Milky</div>
+      <p class="region-taste">Café latte, cappuccino type — you like your coffee with milk and balanced sweetness.</p>
+      <div class="region-tags">
+        <span class="rtag">Arabica</span>
+        <span class="rtag">Medium Roast</span>
+        <span class="rtag">Moka Pot</span>
+      </div>
+    </div>
+    <div class="region-card">
+      <div style="font-size:24px;margin-bottom:12px;">🍓</div>
+      <div class="region-name">Fruity &amp; Sweet</div>
+      <p class="region-taste">Something different — fruity or floral notes, brightness, a cup that surprises you.</p>
+      <div class="region-tags">
+        <span class="rtag">Araku Valley</span>
+        <span class="rtag">Light Roast</span>
+        <span class="rtag">Pour Over</span>
+      </div>
+    </div>
+    <div class="region-card">
+      <div style="font-size:24px;margin-bottom:12px;">🍵</div>
+      <div class="region-name">Light &amp; Gentle</div>
+      <p class="region-taste">Not too intense — clean, elegant, easy to drink. Especially good if you're coming from tea.</p>
+      <div class="region-tags">
+        <span class="rtag">Nilgiris</span>
+        <span class="rtag">Washed Process</span>
+        <span class="rtag">Pour Over</span>
+      </div>
+    </div>
+    <div class="region-card">
+      <div style="font-size:24px;margin-bottom:12px;">🧊</div>
+      <div class="region-name">Cold Coffee</div>
+      <p class="region-taste">Iced or cold drinks — smooth, low-acid, naturally sweet concentrate over ice.</p>
+      <div class="region-tags">
+        <span class="rtag">Medium Roast</span>
+        <span class="rtag">Cold Brew</span>
+        <span class="rtag">Indian Arabica</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="myth-box" style="margin-top:20px;">
+    <p><strong>Why Indian coffee is special:</strong> India is one of the few places in the world where coffee grows under shade — under pepper vines, cardamom, and forest trees. This slow growth gives Indian coffee a naturally low acidity, a full body, and a spicy depth you won't find in most other origins.</p>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="guide-step" id="step2">
+  <div class="step-header">
+    <div class="step-num">02</div>
+    <div class="step-title-block">
+      <h2>India's Best Coffee Regions</h2>
+      <span class="step-sub">What each region gives you in your cup, in plain language.</span>
+    </div>
+  </div>
+
+  <div class="region-grid">
+    <div class="region-card">
+      <div class="region-name">🌿 Chikmagalur Arabica</div>
+      <div class="region-loc">Karnataka · 1,000–1,500m Altitude</div>
+      <div class="region-stats">
+        <div class="stat-row"><span>Body</span><span>Heavy</span></div>
+        <div class="stat-row"><span>Acidity</span><span>Mild</span></div>
+        <div class="stat-row"><span>Sweetness</span><span>High</span></div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:#4a3520;margin-bottom:10px;">India's most famous region. Rich, full-bodied with notes of dark chocolate, nuts, and a gentle spice finish. Best for beginners.</p>
+      <div class="region-taste">Tastes like: Dark chocolate, roasted nuts, mild spice</div>
+      <div class="region-tags">
+        <span class="rtag">Beginner Friendly</span>
+        <span class="rtag">Filter Coffee</span>
+        <span class="rtag">Pour Over</span>
+      </div>
+    </div>
+
+    <div class="region-card">
+      <div class="region-name">⛰ Coorg (Kodagu)</div>
+      <div class="region-loc">Karnataka · Rich Forest Region</div>
+      <div class="region-stats">
+        <div class="stat-row"><span>Body</span><span>Very Heavy</span></div>
+        <div class="stat-row"><span>Acidity</span><span>Low</span></div>
+        <div class="stat-row"><span>Bitterness</span><span>Medium</span></div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:#4a3520;margin-bottom:10px;">Known for thick, syrupy coffee. Coorg Robusta is among India's best — earthy, bold, with a woody depth. The Arabica is chocolatey and full.</p>
+      <div class="region-taste">Tastes like: Dark chocolate, earth, woody, full-bodied</div>
+      <div class="region-tags">
+        <span class="rtag">South Indian Filter</span>
+        <span class="rtag">Milk Coffee</span>
+        <span class="rtag">French Press</span>
+      </div>
+    </div>
+
+    <div class="region-card">
+      <div class="region-name">🏆 Araku Valley Arabica</div>
+      <div class="region-loc">Andhra Pradesh · Tribal Highlands</div>
+      <div class="region-stats">
+        <div class="stat-row"><span>Body</span><span>Medium</span></div>
+        <div class="stat-row"><span>Acidity</span><span>Bright</span></div>
+        <div class="stat-row"><span>Sweetness</span><span>Very High</span></div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:#4a3520;margin-bottom:10px;">India's most celebrated specialty coffee. Grown by tribal farmers at high altitude, entirely organic. Won international awards in Paris. If you want to try something special, start here.</p>
+      <div class="region-taste">Tastes like: Fruit, floral, light caramel, bright finish</div>
+      <div class="region-tags">
+        <span class="rtag">Award-Winning</span>
+        <span class="rtag">Specialty Grade</span>
+        <span class="rtag">Pour Over</span>
+      </div>
+    </div>
+
+    <div class="region-card">
+      <div class="region-name">🌊 Monsoon Malabar</div>
+      <div class="region-loc">Kerala &amp; Karnataka · Coastal Winds</div>
+      <div class="region-stats">
+        <div class="stat-row"><span>Body</span><span>Very Heavy</span></div>
+        <div class="stat-row"><span>Acidity</span><span>Almost Zero</span></div>
+        <div class="stat-row"><span>Uniqueness</span><span>Extreme</span></div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:#4a3520;margin-bottom:10px;">One of India's most unique coffees. Green beans exposed to monsoon winds for weeks, creating an earthy, musty, incredibly full-bodied cup. A divisive taste — some love it deeply.</p>
+      <div class="region-taste">Tastes like: Musty, earthy, thick, zero acidity, bold</div>
+      <div class="region-tags">
+        <span class="rtag">Uniquely Indian</span>
+        <span class="rtag">Espresso Blend</span>
+        <span class="rtag">Filter Coffee</span>
+      </div>
+    </div>
+
+    <div class="region-card">
+      <div class="region-name">🍃 Nilgiris Coffee</div>
+      <div class="region-loc">Tamil Nadu · Blue Mountains</div>
+      <div class="region-stats">
+        <div class="stat-row"><span>Body</span><span>Medium-Light</span></div>
+        <div class="stat-row"><span>Acidity</span><span>Medium</span></div>
+        <div class="stat-row"><span>Clarity</span><span>High</span></div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:#4a3520;margin-bottom:10px;">Clean, bright, and elegant. A lighter style of Indian coffee — grown alongside tea estates. Good for those transitioning from tea to coffee.</p>
+      <div class="region-taste">Tastes like: Clean, light floral, gentle sweetness, mild</div>
+      <div class="region-tags">
+        <span class="rtag">Great for Tea Drinkers</span>
+        <span class="rtag">Light &amp; Gentle</span>
+        <span class="rtag">Pour Over</span>
+      </div>
+    </div>
+
+    <div class="region-card">
+      <div class="region-name">💪 Indian Robusta</div>
+      <div class="region-loc">Kerala, Karnataka · Widely Grown</div>
+      <div class="region-stats">
+        <div class="stat-row"><span>Strength</span><span>Very High</span></div>
+        <div class="stat-row"><span>Acidity</span><span>Very Low</span></div>
+        <div class="stat-row"><span>Caffeine</span><span>2× Arabica</span></div>
+      </div>
+      <p style="font-size:13px;line-height:1.6;color:#4a3520;margin-bottom:10px;">The backbone of South Indian filter coffee. Thick, strong, earthy. Commonly blended with chicory for decoction. If you want the "kick" — this is your bean.</p>
+      <div class="region-taste">Tastes like: Strong, earthy, woody, thick — classic Indian filter</div>
+      <div class="region-tags">
+        <span class="rtag">Most Affordable</span>
+        <span class="rtag">South Indian Filter</span>
+        <span class="rtag">Decoction Base</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="myth-box" style="margin-top:20px;">
+    <p><strong>Arabica vs Robusta, simply:</strong> There are mainly two types — Arabica (grown at higher altitudes, naturally sweeter, more complex, less caffeine) and Robusta (lower altitude, stronger, more bitter, more caffeine). Most South Indian filter coffee uses a blend of both. Specialty cafés usually use 100% Arabica. Neither is "better" — it depends on what you enjoy.</p>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="guide-step" id="step3">
+  <div class="step-header">
+    <div class="step-num">03</div>
+    <div class="step-title-block">
+      <h2>Roast Levels</h2>
+      <span class="step-sub">Does the colour of the bean matter? Yes — a lot.</span>
+    </div>
+  </div>
+
+  <div class="roast-grid">
+    <div class="roast-card">
+      <div class="roast-level">Light Roast</div>
+      <div class="roast-desc">Fruity · Bright · Complex</div>
+      <p class="roast-notes">The bean is roasted less, so it keeps more natural flavours. More acidity, less bitterness. This is why light-roasted Araku tastes fruity — the roaster lets the bean speak for itself.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+        <span class="rtag">Fruit</span><span class="rtag">Floral</span><span class="rtag">Bright</span><span class="rtag">Tea-like</span>
+      </div>
+      <div class="roast-best">Best if you like: Light, interesting, complex cups — pour over style</div>
+    </div>
+    <div class="roast-card">
+      <div class="roast-level">Medium Roast</div>
+      <div class="roast-desc">Balanced · Chocolatey · Smooth</div>
+      <p class="roast-notes">The sweet spot for most people. Roasted longer so sugars caramelise — giving you chocolate, caramel, and nutty notes. Not too bright, not too bitter. Works beautifully with or without milk.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+        <span class="rtag">Chocolate</span><span class="rtag">Caramel</span><span class="rtag">Nuts</span><span class="rtag">Balanced</span>
+      </div>
+      <div class="roast-best">Best if you like: Everyday drinking, milk coffee, beginners</div>
+    </div>
+    <div class="roast-card">
+      <div class="roast-level">Dark Roast</div>
+      <div class="roast-desc">Bold · Bitter · Smoky</div>
+      <p class="roast-notes">Roasted longest. The original bean's flavours are mostly replaced by roast flavours: bitter, smoky, dark chocolate, woody. Works well as decoction base or with lots of milk and sugar.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+        <span class="rtag">Smoky</span><span class="rtag">Dark Choc</span><span class="rtag">Bitter</span><span class="rtag">Bold</span>
+      </div>
+      <div class="roast-best">Best if you like: Strong filter coffee, decoction, bittersweet taste</div>
+    </div>
+  </div>
+
+  <div class="myth-box">
+    <p><strong>Common myth: Dark roast = more caffeine.</strong> Actually the opposite is true. Caffeine is partially destroyed by heat. Light roast has slightly more caffeine. But the taste difference is far more dramatic than the caffeine difference — choose by taste, not caffeine level.</p>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="guide-step" id="step4">
+  <div class="step-header">
+    <div class="step-num">04</div>
+    <div class="step-title-block">
+      <h2>Processing Methods</h2>
+      <span class="step-sub">How the coffee was treated after harvest changes your cup dramatically.</span>
+    </div>
+  </div>
+
+  <div class="process-list">
+    <div class="process-item">
+      <div class="process-icon">🍒</div>
+      <div>
+        <div class="process-name">Natural Process</div>
+        <div class="process-subtitle">The whole fruit dries in the sun, unwashed</div>
+        <p class="process-text">The coffee cherry is picked and left to dry whole — in the sun for weeks. The bean absorbs sugars and flavours from the fruit pulp as it dries. Araku Valley naturals are famous for this. Very common in Indian specialty coffee.</p>
+        <span class="process-vibe">→ Very fruity, wine-like, sweet</span>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-icon">💧</div>
+      <div>
+        <div class="process-name">Washed Process</div>
+        <div class="process-subtitle">Fruit is removed, bean is washed clean before drying</div>
+        <p class="process-text">The fruit pulp is removed immediately after picking and the bean is thoroughly washed before drying. This gives you a "clean" cup — you taste the pure bean character. Most Chikmagalur and Nilgiris specialty coffee uses this method.</p>
+        <span class="process-vibe">→ Clean, bright, consistent</span>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-icon">🍯</div>
+      <div>
+        <div class="process-name">Honey Process</div>
+        <div class="process-subtitle">Some fruit pulp is left on the bean during drying</div>
+        <p class="process-text">A middle path — some of the sticky fruit layer is left on the bean during drying. The result sits between natural and washed: some fruit sweetness, but also clarity. Increasingly popular with Indian specialty roasters. Notes of honey, stone fruit, mild sweetness.</p>
+        <span class="process-vibe">→ Sweet, balanced, gentle</span>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-icon">🌬</div>
+      <div>
+        <div class="process-name">Monsooning</div>
+        <div class="process-subtitle">Beans exposed to monsoon winds for weeks — uniquely Indian</div>
+        <p class="process-text">Exclusive to India. Green beans are spread in open warehouses on the Malabar coast and exposed to monsoon winds for 12–16 weeks. They swell, change colour, and develop an incredibly earthy, musty, low-acid character. If you drink strong South Indian coffee, you've likely already had this.</p>
+        <span class="process-vibe">→ Earthy, bold, zero acidity</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="guide-step" id="step5">
+  <div class="step-header">
+    <div class="step-num">05</div>
+    <div class="step-title-block">
+      <h2>How to Brew</h2>
+      <span class="step-sub">The same bean brewed differently tastes completely different.</span>
+    </div>
+  </div>
+
+  <div class="brew-grid">
+    <div class="brew-card">
+      <div class="brew-header">
+        <div class="brew-name">🪣 South Indian Filter</div>
+        <span class="brew-difficulty">Easy</span>
+      </div>
+      <div class="brew-stats">
+        <div class="brew-stat"><strong>₹200–600</strong>Device Cost</div>
+        <div class="brew-stat"><strong>15–20 min</strong>Brew Time</div>
+      </div>
+      <p class="brew-text">A two-chamber metal device. Hot water passes through ground coffee slowly to create a thick, concentrated decoction. Mixed with hot milk and sugar. India's oldest and most beloved method.</p>
+      <div class="brew-perfect">✓ Perfect for: Thick, strong, milky coffee at home</div>
+    </div>
+
+    <div class="brew-card">
+      <div class="brew-header">
+        <div class="brew-name">🫖 French Press</div>
+        <span class="brew-difficulty">Easy</span>
+      </div>
+      <div class="brew-stats">
+        <div class="brew-stat"><strong>₹800–2,500</strong>Device Cost</div>
+        <div class="brew-stat"><strong>4 min</strong>Brew Time</div>
+      </div>
+      <p class="brew-text">Add coarse-ground coffee, pour hot water, wait 4 minutes, press the plunger. No paper filters — oils stay in the cup giving you a thick, full-bodied, rich coffee. Very easy for beginners.</p>
+      <div class="brew-perfect">✓ Perfect for: Rich, full-bodied coffee without big investment</div>
+    </div>
+
+    <div class="brew-card">
+      <div class="brew-header">
+        <div class="brew-name">☕ Moka Pot</div>
+        <span class="brew-difficulty">Easy</span>
+      </div>
+      <div class="brew-stats">
+        <div class="brew-stat"><strong>₹700–2,500</strong>Device Cost</div>
+        <div class="brew-stat"><strong>5–7 min</strong>Brew Time</div>
+      </div>
+      <p class="brew-text">A stovetop aluminium pot. Water pressure forces through coffee grounds and collects in the top. Makes a thick, intense, espresso-style brew. Very popular in Indian homes. Affordable, durable, no electricity needed.</p>
+      <div class="brew-perfect">✓ Perfect for: Espresso strength without a machine</div>
+    </div>
+
+    <div class="brew-card">
+      <div class="brew-header">
+        <div class="brew-name">☕ Pour Over (V60)</div>
+        <span class="brew-difficulty">Some Practice</span>
+      </div>
+      <div class="brew-stats">
+        <div class="brew-stat"><strong>₹800–3,000</strong>Device Cost</div>
+        <div class="brew-stat"><strong>3–4 min</strong>Brew Time</div>
+      </div>
+      <p class="brew-text">Slowly pour hot water over grounds in a paper filter over your cup. Paper filters out oils — result is a clean, bright cup where you taste every nuance of the bean. This is how specialty café coffee tastes.</p>
+      <div class="brew-perfect">✓ Perfect for: Araku or Nilgiris beans, curious home brewers</div>
+    </div>
+
+    <div class="brew-card">
+      <div class="brew-header">
+        <div class="brew-name">🔵 AeroPress</div>
+        <span class="brew-difficulty">Easy</span>
+      </div>
+      <div class="brew-stats">
+        <div class="brew-stat"><strong>₹3,500–5,000</strong>Device Cost</div>
+        <div class="brew-stat"><strong>2 min</strong>Brew Time</div>
+      </div>
+      <p class="brew-text">A cylindrical plastic device — add grounds, pour hot water, wait, push the plunger. Makes a concentrated, clean, strong coffee. Incredibly forgiving — hard to make bad coffee. Works for any roast. Great for travel.</p>
+      <div class="brew-perfect">✓ Perfect for: Versatile brewing, experimenting without fuss</div>
+    </div>
+
+    <div class="brew-card">
+      <div class="brew-header">
+        <div class="brew-name">🧊 Cold Brew</div>
+        <span class="brew-difficulty">Easy (Just Slow)</span>
+      </div>
+      <div class="brew-stats">
+        <div class="brew-stat"><strong>₹0–500</strong>Device Cost</div>
+        <div class="brew-stat"><strong>12–18 hrs</strong>Brew Time</div>
+      </div>
+      <p class="brew-text">Coarse-ground coffee soaked in cold water overnight. No heat. Result is a smooth, sweet, naturally low-acid concentrate you dilute and drink over ice. Just a jar and strainer. Indian coffee is excellent for cold brew.</p>
+      <div class="brew-perfect">✓ Perfect for: Summer drinking, people who find hot coffee acidic</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="guide-step" id="step6">
+  <div class="step-header">
+    <div class="step-num">06</div>
+    <div class="step-title-block">
+      <h2>Buying Smart</h2>
+      <span class="step-sub">Where you buy matters as much as what you buy.</span>
+    </div>
+  </div>
+
+  <div class="myth-box" style="margin-bottom:24px;">
+    <p><strong>The single most important rule:</strong> A ₹500 bag of freshly roasted, freshly ground coffee brewed in a ₹400 South Indian filter will beat a ₹3,000 bag of pre-ground supermarket coffee brewed in a ₹25,000 machine. Freshness and grind quality matter more than equipment price.</p>
+  </div>
+
+  <div class="tips-list">
+    <div class="tip-item">
+      <div class="tip-num">1</div>
+      <div class="tip-body">
+        <h3>Look for the roast date — not the expiry date</h3>
+        <p>Coffee goes stale, not dangerous. The "best before" date tells you nothing useful. You want to know when it was roasted. Freshly roasted coffee is at its best between 7–21 days after roasting. If there's no roast date on the bag, that's a red flag. Buy beans roasted within the last 3 weeks and use within 4–6 weeks of opening.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">2</div>
+      <div class="tip-body">
+        <h3>Buy whole beans — grind at home or at the shop</h3>
+        <p>Ground coffee starts going stale within 15–30 minutes of grinding. Whole beans stay fresh for weeks. If you don't have a grinder, ask the roaster to grind for your specific brew method and buy only enough for 1–2 weeks at a time. Ask for: "Medium coarse grind for French press" or "Fine grind for South Indian filter."</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">3</div>
+      <div class="tip-body">
+        <h3>Buy direct from roasters</h3>
+        <p>Indian specialty roasters who ship nationwide: Blue Tokai (most widely available, excellent Chikmagalur &amp; Araku range), Araku Coffee, Third Wave Coffee Roasters, Flying Squirrel (Coorg focus), Corridor Seven, Subko, KC Roasters. All have online stores and all print roast dates. If you have a local independent roaster — even better, the beans are freshest.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">4</div>
+      <div class="tip-body">
+        <h3>How to store your coffee</h3>
+        <p>Keep in an airtight container, away from direct sunlight, heat, and moisture. Not in the fridge — moisture damages beans. Best is a dark, cool cupboard. Most specialty bags have a one-way valve — keep beans in the bag and squeeze out air before sealing. Buy small amounts frequently (250g every 2–3 weeks) rather than 1kg bags that sit for months.</p>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">5</div>
+      <div class="tip-body">
+        <h3>Reading a specialty coffee bag — 5 things to check</h3>
+        <p><strong>1. Roast date</strong> — is it recent? &nbsp;<strong>2. Origin</strong> — which region of India? &nbsp;<strong>3. Variety</strong> — Arabica or Robusta? &nbsp;<strong>4. Process</strong> — Natural, Washed, or Honey? &nbsp;<strong>5. Tasting notes</strong> — what does the roaster say it tastes like? A skilled roaster's tasting notes are usually accurate. Use them to guide your choice. Don't be shy: DM the roaster asking which bean suits your brewing method — they're usually very happy to help.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cheatsheet -->
+  <div class="cheatsheet">
+    <div class="cheat-title">The Coffee <em>Cheatsheet</em></div>
+    <div class="cheat-grid">
+      <div class="cheat-item">
+        <div class="cheat-q">I want strong coffee</div>
+        <div class="cheat-a">Robusta or Robusta-Arabica blend. Dark-medium roast. South Indian filter or Moka Pot.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">I want fruity coffee</div>
+        <div class="cheat-a">Araku Valley Arabica. Natural process. Light roast. Pour Over or AeroPress.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">I want café-style lattes</div>
+        <div class="cheat-a">Chikmagalur Arabica. Medium roast. Moka Pot + handheld frother, or invest in an espresso machine.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">I'm a complete beginner</div>
+        <div class="cheat-a">South Indian Filter (₹400) + Chikmagalur Arabica medium-dark roast freshly ground. Perfect starting point.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">I find coffee too bitter</div>
+        <div class="cheat-a">Try light or medium roast. Try washed process Arabica. Try pour over method. Adjust one variable at a time.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">What water temperature?</div>
+        <div class="cheat-a">Let boiling water sit for 30 seconds before pouring. About 93–95°C. Boiling water can over-extract and cause bitterness.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">How much coffee per cup?</div>
+        <div class="cheat-a">1g coffee per 15–17ml water. For one cup (250ml): 15–17g of coffee. Adjust to taste.</div>
+      </div>
+      <div class="cheat-item">
+        <div class="cheat-q">Should I add chicory?</div>
+        <div class="cheat-a">Traditional South Indian filter coffee uses a 70:30 or 80:20 coffee-chicory mix. Pure coffee without chicory is smoother. Try both — both are valid.</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- COMING SOON -->
+
+<section class="coming-soon-strip" id="coming-soon">
+  <div class="section-label">What We're Building</div>
+  <h2 class="section-title">The ORIGIN Experience</h2>
+  <p class="section-sub">We're in active talks with Indian coffee estates. Everything below is coming — nothing has been finalised yet, but this is exactly what we're working towards.</p>
+
+  <div class="coming-cards">
+    <div class="coming-card">
+      <div class="coming-card-icon">📦</div>
+      <h3 id="beans-subscriptions">Bean Subscriptions</h3>
+      <p>Monthly direct-trade boxes featuring single-origin Indian coffee from named estates. Each shipment will include beans, a farm story card, tasting notes, and a QR code linking to a video from the estate itself. Three tiers planned: Explorer (₹699), Connoisseur (₹1,299), and Reserve (₹2,499/month).</p>
+      <span class="tag-soon">Coming Soon</span>
+    </div>
+
+```
+<div class="coming-card">
+  <div class="coming-card-icon">🗺</div>
+  <h3 id="estate-visits">Estate Visits &amp; Experiences</h3>
+  <p>We're talking to estates in Chikmagalur, Coorg, Wayanad, Araku Valley, and the Nilgiris. The plan: plantation day visits, weekend farm stays, harvest immersions (Oct–Feb), and multi-estate connoisseur trails. Small groups, intentionally intimate — not a bus tour.</p>
+  <span class="tag-soon">Coming Soon</span>
+</div>
+
+<div class="coming-card">
+  <div class="coming-card-icon">🔧</div>
+  <h3>Home Brew Kits</h3>
+  <p>Curated equipment bundles that pair the right gear with the right beans and a beginner's guide. From a basic Starter Kit with a hand grinder to a Discovery Kit with three different Indian origins to taste side-by-side. For anyone who wants to brew well at home without the jargon.</p>
+  <span class="tag-soon">Coming Soon</span>
+</div>
+
+<div class="coming-card">
+  <div class="coming-card-icon">🏠</div>
+  <h3>Tasting Rooms</h3>
+  <p>Small-format walk-in tasting spaces in metros — not a café. A place to taste 4–5 single-origin Indian coffees side by side, guided, with the story of each estate told through the space. Every cup points toward the farm — and toward visiting it. First location planned for Bengaluru.</p>
+  <span class="tag-soon">Coming Soon</span>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- VISION -->
+
+<section class="vision-section">
+  <div class="vision-inner">
+    <div class="section-label">Our Mission</div>
+    <h2 class="vision-quote">India grows <em>extraordinary coffee.</em><br>Most Indians have never tasted it.</h2>
+    <p class="vision-body">Over 75% of Indian coffee is exported while consumers at home settle for instant powder or generic blends, unaware that world-class single-origin coffee is growing a few hundred kilometres away. ORIGIN is here to change that — connecting farms directly to consumers through education, direct-trade products, and immersive estate experiences.</p>
+
+```
+<div class="pillars">
+  <div class="pillar">
+    <h4>Traceability</h4>
+    <p>Named estates, farmer stories, and processing methods — not anonymous blends. You'll know exactly where your coffee came from.</p>
+  </div>
+  <div class="pillar">
+    <h4>Education</h4>
+    <p>Hobbyist-first learning in plain language. Brew better at home. No barista degree required.</p>
+  </div>
+  <div class="pillar">
+    <h4>Experience</h4>
+    <p>Tasting sessions, farm tours, and pop-ups that feel like discovery — not a lecture.</p>
+  </div>
+  <div class="pillar">
+    <h4>Journey</h4>
+    <p>Estate stays and harvest trips that complete the farm-to-cup story. Stand in the estate you drink from.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact-section" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <div class="contact-name">Priya Jain</div>
+  <div class="contact-role">Founder, ORIGIN</div>
+
+  <div class="contact-links">
+    <a href="tel:+919971675977" class="contact-link">
+      <span class="link-icon">📞</span>
+      +91 99716 75977
+    </a>
+    <a href="mailto:priya.jain.ai@gmail.com" class="contact-link">
+      <span class="link-icon">✉️</span>
+      priya.jain.ai@gmail.com
+    </a>
+    <a href="https://instagram.com/origin.coffee.india" target="_blank" class="contact-link">
+      <span class="link-icon">📷</span>
+      @origin.coffee.india
+    </a>
+  </div>
+
+  <div class="divider" style="margin-bottom:32px;">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="footer-brand">O R I G I N</div>
+  <div class="footer-tagline">Farm. Story. Cup. Journey.</div>
+</section>
+
+</body>
+</html>
