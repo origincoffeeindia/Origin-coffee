@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIGIN — Elkhill Estates, Coorg | Traceability</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coffee:#3E2A20;
+    --espresso:#28190F;
+    --accent:#A9683C;
+    --cream:#F4ECDF;
+    --paper:#FBF6EC;
+    --leaf:#5B6B47;
+    --ink:#2A211B;
+    --rule:#D8C6A8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Archivo',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:480px;margin:0 auto;background:var(--paper);
+    box-shadow:0 0 60px rgba(40,25,15,.12);min-height:100vh;}
+
+  /* ---- HERO ---- */
+  .hero{
+    background:linear-gradient(165deg,#3E2A20 0%,#28190F 100%);
+    color:var(--cream);padding:54px 32px 48px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;
+    border-radius:50%;background:radial-gradient(circle,rgba(169,104,60,.38),transparent 70%);
+  }
+  .hero::before{
+    content:"";position:absolute;left:-50px;bottom:-90px;width:200px;height:200px;
+    border-radius:50%;background:radial-gradient(circle,rgba(91,107,71,.30),transparent 70%);
+  }
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:30px;letter-spacing:.16em;
+    position:relative;z-index:2;}
+  .tagline{font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--accent);margin-top:8px;position:relative;z-index:2;font-weight:600;}
+  .hero-eyebrow{margin-top:40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(244,236,223,.62);position:relative;z-index:2;}
+  .hero-title{font-family:'Fraunces',serif;font-weight:500;font-size:40px;line-height:1.1;
+    margin-top:12px;position:relative;z-index:2;}
+  .hero-title em{font-style:italic;color:var(--accent);}
+  .hero-sub{margin-top:18px;font-size:15px;color:rgba(244,236,223,.78);
+    position:relative;z-index:2;max-width:330px;}
+
+  /* ---- SECTION SHELL ---- */
+  section{padding:44px 32px;}
+  .kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;}
+  .h{font-family:'Fraunces',serif;font-weight:500;font-size:26px;line-height:1.2;
+    margin-top:10px;color:var(--coffee);}
+  .p{margin-top:14px;font-size:15px;color:#4a3d33;}
+
+  /* ---- ESTATE STRIP ---- */
+  .estate{background:var(--cream);}
+  .facts{margin-top:22px;border-top:1px solid var(--rule);}
+  .fact{display:flex;justify-content:space-between;gap:18px;
+    padding:13px 0;border-bottom:1px solid var(--rule);}
+  .fact dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;flex-shrink:0;}
+  .fact dd{font-size:14px;text-align:right;color:var(--ink);font-weight:500;}
+
+  /* ---- TWO LOTS ---- */
+  .lots{display:flex;gap:14px;margin-top:24px;}
+  .lot{flex:1;border:1px solid var(--rule);border-radius:14px;padding:20px 16px;
+    background:var(--paper);position:relative;}
+  .lot h4{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--coffee);}
+  .lot .tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:6px;}
+  .lot p{font-size:13px;margin-top:8px;color:#4a3d33;}
+
+  /* ---- PRICE CARD ---- */
+  .price{background:linear-gradient(165deg,#3E2A20,#28190F);color:var(--cream);}
+  .price .h{color:var(--cream);}
+  .pricebox{margin-top:22px;border:1px solid rgba(216,198,168,.3);border-radius:16px;
+    padding:24px;text-align:center;background:rgba(169,104,60,.10);}
+  .premium{font-family:'Fraunces',serif;font-size:54px;font-weight:600;color:var(--accent);
+    line-height:1;}
+  .premium-label{font-size:13px;letter-spacing:.04em;color:rgba(244,236,223,.8);margin-top:10px;}
+  .price-rows{margin-top:22px;}
+  .price-row{display:flex;justify-content:space-between;padding:10px 0;
+    border-bottom:1px solid rgba(216,198,168,.18);font-size:14px;}
+  .price-row span:first-child{color:rgba(244,236,223,.66);}
+  .price-row span:last-child{font-weight:600;}
+  .pledge{margin-top:18px;font-size:13px;color:rgba(244,236,223,.7);font-style:italic;}
+
+  /* ---- SUSTAIN ---- */
+  .green-list{margin-top:22px;display:flex;flex-direction:column;gap:16px;}
+  .gitem{display:flex;gap:14px;align-items:flex-start;}
+  .dot{width:34px;height:34px;border-radius:50%;flex-shrink:0;
+    background:var(--leaf);color:var(--cream);display:flex;align-items:center;
+    justify-content:center;font-size:16px;}
+  .gitem h5{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--coffee);}
+  .gitem p{font-size:13px;color:#4a3d33;margin-top:3px;}
+
+  /* ---- FOOTER ---- */
+  footer{background:var(--espresso);color:rgba(244,236,223,.7);
+    padding:40px 32px;text-align:center;}
+  footer .brand{font-size:22px;color:var(--cream);}
+  .journey{margin-top:16px;font-family:'Fraunces',serif;font-style:italic;
+    font-size:15px;color:var(--accent);}
+  .note{margin-top:20px;font-size:11px;color:rgba(244,236,223,.4);line-height:1.7;}
+  .placeholder{color:var(--accent);font-style:italic;}
+
+  /* fade-up */
+  .reveal{opacity:0;transform:translateY(22px);
+    transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand">ORIGIN</div>
+    <div class="tagline">Farm · Story · Cup · Journey</div>
+    <div class="hero-eyebrow">The coffee in your hands</div>
+    <h1 class="hero-title">Elkhill Estates,<br><em>Coorg</em></h1>
+    <p class="hero-sub">Some coffee has no address. Yours does — and this is it.</p>
+  </header>
+
+  <section class="estate reveal">
+    <div class="kicker">The Estate</div>
+    <h2 class="h">Farmed since 1870</h2>
+    <p class="p">Your coffee comes from Elkhill Estates, in the hills of Kodagu — Coorg — Karnataka. Six estates across 1,600 acres, worked by the same family enterprise for generations, where mist and red earth do slow, patient work on the coffee.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Region</dt><dd>Kodagu (Coorg), Karnataka</dd></div>
+      <div class="fact"><dt>Elevation</dt><dd>Up to ~3,500 ft</dd></div>
+      <div class="fact"><dt>Species</dt><dd>100% Arabica</dd></div>
+      <div class="fact"><dt>Cultivation</dt><dd>Shade-grown, native canopy</dd></div>
+      <div class="fact"><dt>Curing</dt><dd>Elkhill's own curing works</dd></div>
+      <div class="fact"><dt>Sourced</dt><dd>Direct — no broker</dd></div>
+    </dl>
+  </section>
+
+  <section class="reveal">
+    <div class="kicker">The Coffee</div>
+    <h2 class="h">One estate, two cups</h2>
+    <p class="p">Elkhill crafted this coffee exclusively for ORIGIN, as part of their new specialty range — the very same coffee in two expressions. Taste them side by side and you'll learn what processing really does.</p>
+    <div class="lots">
+      <div class="lot">
+        <div class="tag">Lot 01</div>
+        <h4>Washed</h4>
+        <p>Fruit removed early. Cleaner, brighter — the estate with clarity.</p>
+      </div>
+      <div class="lot">
+        <div class="tag">Lot 02</div>
+        <h4>Natural</h4>
+        <p>Dried with the fruit on. Heavier, sweeter, fruitier in the cup.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="price reveal">
+    <div class="kicker">What We Pay The Farm</div>
+    <h2 class="h">An honest price, on the record</h2>
+    <p class="p" style="color:rgba(244,236,223,.8);">No commodity grade. No anonymous lot. We buy this coffee straight from Elkhill, at a specialty price agreed with the estate — and we'll always tell you what that price is.</p>
+    <div class="price-rows">
+      <div class="price-row"><span>Washed lot — paid to Elkhill</span><span>₹850 / kg green</span></div>
+      <div class="price-row"><span>Natural lot — paid to Elkhill</span><span>₹1,000 / kg green</span></div>
+      <div class="price-row"><span>How we bought it</span><span>Direct — no broker</span></div>
+    </div>
+    <p class="pledge">The natural lot costs more because its process is slower, riskier and more labour-intensive — that extra goes to the estate, not to us.</p>
+  </section>
+
+  <section class="reveal">
+    <div class="kicker">Where Your Money Goes</div>
+    <h2 class="h">What your price supports</h2>
+    <p class="p">When you buy this coffee, your money doesn't just buy beans. It pays a fair, direct price to an estate that farms the right way. Here's what that price keeps alive at Elkhill:</p>
+    <div class="green-list">
+      <div class="gitem">
+        <div class="dot">❧</div>
+        <div><h5>A living forest canopy</h5><p>Shade trees kept standing instead of cleared — habitat for hornbills, civets and giant squirrels.</p></div>
+      </div>
+      <div class="gitem">
+        <div class="dot">♺</div>
+        <div><h5>Healthy soil, no waste</h5><p>Coffee pulp composted back into the earth, cutting synthetic fertiliser.</p></div>
+      </div>
+      <div class="gitem">
+        <div class="dot">✦</div>
+        <div><h5>Clean water &amp; energy</h5><p>A biogas plant turning pulping wastewater into energy instead of polluting streams.</p></div>
+      </div>
+      <div class="gitem">
+        <div class="dot">⚘</div>
+        <div><h5>A farm that lasts</h5><p>A fair price that lets the estate plan, invest, and keep farming well for the next generation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">ORIGIN</div>
+    <div class="journey">Farm. Story. Cup. Journey.</div>
+    <p class="note">India's first integrated coffee platform.<br>
+    Coffee you can trace — to real land, real practice, real people.<br>
+    Scan. Know your farm.</p>
+  </footer>
+
+</div>
+<script>
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
